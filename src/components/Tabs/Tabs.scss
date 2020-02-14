@@ -3,6 +3,8 @@
 $item-min-height: rem(16px);
 $item-min-width: rem(50px);
 $item-vertical-padding: $item-min-height / 2;
+$border-bottom-height: border-width(thicker);
+$tab-separation-spacing: spacing(tight);
 $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
 .Tabs {
@@ -48,13 +50,15 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   @include unstyled-button;
   @include text-style-body;
   @include text-emphasis-subdued;
+  color: var(--p-text, color('ink', 'lighter'));
+
   position: relative;
   justify-content: center;
   width: 100%;
   min-width: 100%; // IE11 fix for overflowing flex items from parent container
   margin-top: 1px;
   margin-bottom: -1px;
-  padding: 0 spacing();
+  padding: var(--p-override-zero, 0 spacing());
   outline: none;
   text-align: center;
   white-space: nowrap;
@@ -65,7 +69,9 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
     .Title {
       @include text-emphasis-normal;
       text-decoration: none;
-      border-bottom: border-width(thicker) solid color('sky');
+      background: var(--p-surface-hovered);
+      border-bottom: $border-bottom-height solid
+        var(--p-override-transparent, color('sky'));
 
       @media (-ms-high-contrast: active) {
         border-bottom-color: ms-high-contrast-color('selected-text-background');
@@ -74,19 +80,27 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   }
 
   &:focus {
-    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color,
-      0 0 2px 0 $focus-state-box-shadow-color;
+    box-shadow: var(
+      --p-override-none,
+      inset 0 0 2px 0 $focus-state-box-shadow-color,
+      0 0 2px 0 $focus-state-box-shadow-color
+    );
 
     .Title {
       @include text-emphasis-normal;
-      border-bottom: border-width(thicker) solid color('indigo', 'light');
+      background: var(--p-surface-pressed);
+      border-bottom: $border-bottom-height solid
+        var(--p-override-transparent, color('indigo', 'light'));
     }
   }
 
   &.Tab-selected {
     // stylelint-disable-next-line selector-max-class
     .Title {
-      border-bottom: border-width(thicker) solid color('indigo');
+      border-bottom: $border-bottom-height solid
+        var(--p-override-transparent, color('indigo'));
+      background: var(--p-surface-primary-selected);
+      color: var(--p-action-primary);
 
       @media (-ms-high-contrast: active) {
         background: ms-high-contrast-color('selected-text-background');
@@ -100,11 +114,27 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   @include text-emphasis-normal;
 }
 
+.tabUnderline {
+  height: 0.3rem;
+  margin-left: $tab-separation-spacing;
+  background: transparent;
+  border-top-left-radius: var(--p-border-radius-base);
+  border-top-right-radius: var(--p-border-radius-base);
+}
+
+.selectedTabUnderline {
+  background: var(--p-action-primary);
+}
+
+// height 36px
+// total vertical padding 16px (in a 52px space)
+
 .Title {
   display: block;
-  padding: spacing() 0 (spacing() - border-width(thicker)) 0;
-  border-bottom: border-width(thicker) solid transparent;
+  padding: spacing() 0 (spacing() - $border-bottom-height) 0;
+  border-bottom: $border-bottom-height solid transparent;
   min-width: $item-min-width;
+  border-radius: var(--p-border-radius-base);
 }
 
 .Panel {
@@ -215,7 +245,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   &:hover {
     .Title {
       @include recolor-icon(color('ink'));
-      border-bottom: border-width(thicker) solid color('sky');
+      border-bottom: $border-bottom-height solid color('sky');
 
       @media (-ms-high-contrast: active) {
         @include recolor-icon(color('black'));
@@ -234,7 +264,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
       0 0 2px 0 $focus-state-box-shadow-color;
 
     .Title {
-      border-bottom: border-width(thicker) solid color('indigo', 'light');
+      border-bottom: $border-bottom-height solid color('indigo', 'light');
     }
   }
 }
@@ -243,4 +273,11 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   display: flex;
   visibility: hidden;
   height: 0;
+}
+
+// stylelint-disable selector-max-class
+.newDesignLanguage {
+  padding: $tab-separation-spacing spacing()
+    ($tab-separation-spacing - $border-bottom-height) spacing();
+  margin: $tab-separation-spacing 0 spacing(extra-tight) $tab-separation-spacing;
 }
