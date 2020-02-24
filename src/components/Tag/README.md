@@ -39,6 +39,14 @@ Use to allow merchants to add attributes to, and remove attributes from, an obje
 <Tag>Wholesale</Tag>
 ```
 
+### Tag with onClick handler
+
+Use to allow merchants to manipulate a tag's action based on a specific consumers need. For example, to add a tag to an external list of tags.
+
+```jsx
+<Tag onClick={() => addTag()}>Wholesale</Tag>
+```
+
 <!-- content-for: android -->
 
 ![Tag for Android](/public_images/components/Tag/android/default@2x.png)

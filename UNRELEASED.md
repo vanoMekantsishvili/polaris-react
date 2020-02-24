@@ -4,6 +4,7 @@
 
 ### Enhancements
 
+- Added optional `onClick` prop to `Tag` ([#2774](https://github.com/Shopify/polaris-react/pull/2774))
 - Added high contrast outline to `ActionList` ([#2713](https://github.com/Shopify/polaris-react/pull/2713))
 - Added high contrast border to `Button` ([#2712](https://github.com/Shopify/polaris-react/pull/2712))
 - Added styled placeholder image to `Avatar` when initials are blank ([#2693](https://github.com/Shopify/polaris-react/pull/2693))
