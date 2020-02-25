@@ -115,7 +115,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 }
 
 .tabUnderline {
-  height: 0.3rem;
+  height: $border-bottom-height;
   margin-left: $tab-separation-spacing;
   background: transparent;
   border-top-left-radius: var(--p-border-radius-base);
