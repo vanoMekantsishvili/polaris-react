@@ -11,7 +11,9 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-  padding: 0;
+  padding: var(--p-border-radius-wide, 0);
+  padding-left: 0;
+  padding-bottom: 0;
   border-bottom: border();
   list-style: none;
 }
@@ -126,12 +128,12 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   background: var(--p-action-primary);
 }
 
-// height 36px
-// total vertical padding 16px (in a 52px space)
-
 .Title {
   display: block;
-  padding: spacing() 0 (spacing() - $border-bottom-height) 0;
+  padding: var(
+    --p-override-zero,
+    spacing() 0 (spacing() - $border-bottom-height) 0
+  );
   border-bottom: $border-bottom-height solid transparent;
   min-width: $item-min-width;
   border-radius: var(--p-border-radius-base);
@@ -245,7 +247,8 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   &:hover {
     .Title {
       @include recolor-icon(color('ink'));
-      border-bottom: $border-bottom-height solid color('sky');
+      border-bottom: $border-bottom-height solid
+        var(--p-override-transparent, color('sky'));
 
       @media (-ms-high-contrast: active) {
         @include recolor-icon(color('black'));
@@ -260,11 +263,15 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   }
 
   &:focus {
-    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color,
-      0 0 2px 0 $focus-state-box-shadow-color;
+    box-shadow: var(
+      --p-override-none,
+      inset 0 0 2px 0 $focus-state-box-shadow-color,
+      0 0 2px 0 $focus-state-box-shadow-color
+    );
 
     .Title {
-      border-bottom: $border-bottom-height solid color('indigo', 'light');
+      border-bottom: $border-bottom-height solid
+        var(--p-override-transparent, color('indigo', 'light'));
     }
   }
 }
@@ -279,5 +286,6 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 .newDesignLanguage {
   padding: $tab-separation-spacing spacing()
     ($tab-separation-spacing - $border-bottom-height) spacing();
-  margin: $tab-separation-spacing 0 spacing(extra-tight) $tab-separation-spacing;
+  margin-left: $tab-separation-spacing;
+  margin-bottom: spacing(extra-tight);
 }
