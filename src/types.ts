@@ -1,3 +1,22 @@
+export type NewDesignLanguageColor =
+  | 'base'
+  | 'disabled'
+  | 'hovered'
+  | 'pressed'
+  | 'subdued'
+  | 'critical'
+  | 'warning'
+  | 'highlight'
+  | 'interactive'
+  | 'success'
+  | 'primary'
+  | 'primaryDisabled'
+  | 'primaryHovered'
+  | 'primaryPressed'
+  | 'onInteractive'
+  | 'onPrimary'
+  | 'onCritical';
+
 export type Color =
   | 'white'
   | 'black'
@@ -45,7 +64,7 @@ export interface IconProps {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
   source: IconSource;
   /** Set the color for the SVG fill */
-  color?: Color;
+  color?: Color | NewDesignLanguageColor;
   /** Show a backdrop behind the icon */
   backdrop?: boolean;
   /** Descriptive text to be read to screenreaders */

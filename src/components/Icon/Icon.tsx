@@ -1,4 +1,5 @@
 import React from 'react';
+import {useFeatures} from 'utilities/features';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {IconProps} from '../../types';
@@ -32,11 +33,14 @@ export function Icon({source, color, backdrop, accessibilityLabel}: Props) {
     );
   }
 
+  const {newDesignLanguage} = useFeatures();
+
   const className = classNames(
     styles.Icon,
     color && styles[variationName('color', color)],
     color && color !== 'white' && styles.isColored,
     backdrop && styles.hasBackdrop,
+    newDesignLanguage && styles.newDesignLanguage,
   );
 
   let contentMarkup: React.ReactNode;

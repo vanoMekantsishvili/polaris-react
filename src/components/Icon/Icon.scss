@@ -1,5 +1,11 @@
 @import '../../styles/common';
 
+@mixin new-design-language-color-icon($variant) {
+  svg {
+    fill: $variant;
+  }
+}
+
 .Icon {
   display: block;
   height: rem(20px);
@@ -213,6 +219,74 @@
 
 .colorPurple {
   @include color-icon('purple');
+}
+
+.colorBase {
+  @include new-design-language-color-icon(var(--p-icon));
+}
+
+.colorDisabled {
+  @include new-design-language-color-icon(var(--p-icon-disabled));
+}
+
+.colorSubdued {
+  @include new-design-language-color-icon(var(--p-icon-subdued));
+}
+
+.colorHovered {
+  @include new-design-language-color-icon(var(--p-icon-hovered));
+}
+
+.colorPressed {
+  @include new-design-language-color-icon(var(--p-icon-pressed));
+}
+
+.colorCritical {
+  @include new-design-language-color-icon(var(--p-icon-critical));
+}
+
+.colorWarning {
+  @include new-design-language-color-icon(var(--p-icon-warning));
+}
+
+.colorHighlight {
+  @include new-design-language-color-icon(var(--p-icon-highlight));
+}
+
+.colorSuccess {
+  @include new-design-language-color-icon(var(--p-icon-success));
+}
+
+.colorInteractive {
+  @include new-design-language-color-icon(var(--p-interactive));
+}
+
+.colorPrimary {
+  @include new-design-language-color-icon(var(--p-action-primary));
+}
+
+.colorPrimaryDisabled {
+  @include new-design-language-color-icon(var(--p-action-primary-disabled));
+}
+
+.colorPrimaryHovered {
+  @include new-design-language-color-icon(var(--p-action-primary-hovered));
+}
+
+.colorPrimaryPressed {
+  @include new-design-language-color-icon(var(--p-action-primary-pressed));
+}
+
+.colorOnInteractive {
+  @include new-design-language-color-icon(var(--p-icon-on-interactive));
+}
+
+.colorOnPrimary {
+  @include new-design-language-color-icon(var(--p-icon-on-primary));
+}
+
+.colorOnCritical {
+  @include new-design-language-color-icon(var(--p-icon-on-critical));
 }
 
 .Svg,

@@ -2,6 +2,7 @@ import React from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 // eslint-disable-next-line no-restricted-imports
 import {mountWithAppProvider} from 'test-utilities/legacy';
+import {mountWithApp} from 'test-utilities';
 import {Icon} from '../Icon';
 
 describe('<Icon />', () => {
@@ -30,6 +31,26 @@ describe('<Icon />', () => {
         "<svg><path d='M17 9h-6V3a1 1 0 1 0-2 0v6H3a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2'  fill-rule='evenodd'/></svg>";
       const element = mountWithAppProvider(<Icon source={svg} />);
       expect(element.find('img')).toHaveLength(1);
+    });
+  });
+
+  describe('newDesignLanguage', () => {
+    it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
+      const icon = mountWithApp(<Icon source={PlusMinor} />, {
+        features: {newDesignLanguage: true},
+      });
+      expect(icon).toContainReactComponent('span', {
+        className: 'Icon newDesignLanguage',
+      });
+    });
+
+    it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
+      const icon = mountWithApp(<Icon source={PlusMinor} />, {
+        features: {newDesignLanguage: false},
+      });
+      expect(icon).toContainReactComponent('span', {
+        className: 'Icon',
+      });
     });
   });
 });
