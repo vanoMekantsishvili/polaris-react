@@ -12,10 +12,7 @@ export type NewDesignLanguageColor =
   | 'primary'
   | 'primaryDisabled'
   | 'primaryHovered'
-  | 'primaryPressed'
-  | 'onInteractive'
-  | 'onPrimary'
-  | 'onCritical';
+  | 'primaryPressed';
 
 export type Color =
   | 'white'

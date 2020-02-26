@@ -14,9 +14,9 @@ import styles from './Toast.scss';
 
 export {ToastProps};
 
-export const DEFAULT_TOAST_DURATION = 5000;
+export const DEFAULT_TOAST_DURATION = 500000;
 
-export const DEFAULT_TOAST_DURATION_WITH_ACTION = 10000;
+export const DEFAULT_TOAST_DURATION_WITH_ACTION = 1000000;
 
 export function Toast({
   content,
