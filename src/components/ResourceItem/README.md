@@ -94,10 +94,11 @@ The media element can hold an [avatar](https://polaris.shopify.com/components/im
           'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
         name: 'Yi So-Yeon',
         location: 'Gwangju, South Korea',
+        lastOrder: 'Emerald Silk Gown',
       },
     ]}
     renderItem={(item) => {
-      const {id, url, avatarSource, name, location} = item;
+      const {id, url, avatarSource, name, location, lastOrder} = item;
 
       return (
         <ResourceItem
@@ -113,6 +114,7 @@ The media element can hold an [avatar](https://polaris.shopify.com/components/im
             <TextStyle variation="strong">{name}</TextStyle>
           </h3>
           <div>{location}</div>
+          <div>{lastOrder}</div>
         </ResourceItem>
       );
     }}
@@ -137,10 +139,19 @@ Shortcut actions present popular actions from the resource’s details page for 
         name: 'Yi So-Yeon',
         location: 'Gwangju, South Korea',
         latestOrderUrl: 'orders/1456',
+        lastOrder: 'Emerald Silk Gown',
       },
     ]}
     renderItem={(item) => {
-      const {id, url, avatarSource, name, location, latestOrderUrl} = item;
+      const {
+        id,
+        url,
+        avatarSource,
+        name,
+        location,
+        latestOrderUrl,
+        lastOrder,
+      } = item;
       const shortcutActions = latestOrderUrl
         ? [{content: 'View latest order', url: latestOrderUrl}]
         : null;
@@ -160,6 +171,7 @@ Shortcut actions present popular actions from the resource’s details page for 
             <TextStyle variation="strong">{name}</TextStyle>
           </h3>
           <div>{location}</div>
+          <div>{lastOrder}</div>
         </ResourceItem>
       );
     }}

@@ -168,11 +168,31 @@ $resource-list-item-variables: (
   padding: resource-list-item(padding) spacing();
   min-height: resource-list-item(min-height);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   @include breakpoint-after(resource-list-item(breakpoint-small)) {
     padding: resource-list-item(padding) spacing(loose);
   }
+}
+
+.alignmentLeading {
+  align-items: flex-start;
+}
+
+.alignmentTrailing {
+  align-items: flex-end;
+}
+
+.alignmentCenter {
+  align-items: center;
+}
+
+.alignmentFill {
+  align-items: stretch;
+}
+
+.alignmentBaseline {
+  align-items: baseline;
 }
 
 .Owned {

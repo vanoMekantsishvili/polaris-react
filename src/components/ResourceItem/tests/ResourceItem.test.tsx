@@ -652,6 +652,66 @@ describe('<ResourceItem />', () => {
       });
     });
   });
+
+  describe('alignment', () => {
+    it('renders with default flex-start alignment if not provided', () => {
+      const resourceItem = mountWithApp(<ResourceItem id={itemId} url={url} />);
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container',
+      });
+    });
+
+    it('renders with leading alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} alignment="leading" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentLeading',
+      });
+    });
+
+    it('renders with center alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} alignment="center" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentCenter',
+      });
+    });
+
+    it('renders with trailing alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} alignment="trailing" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentTrailing',
+      });
+    });
+
+    it('renders with stretch alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} alignment="fill" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentFill',
+      });
+    });
+
+    it('renders with baseline alignment', () => {
+      const resourceItem = mountWithApp(
+        <ResourceItem id={itemId} url={url} alignment="baseline" />,
+      );
+
+      expect(resourceItem).toContainReactComponent('div', {
+        className: 'Container alignmentBaseline',
+      });
+    });
+  });
 });
 
 function noop() {}
