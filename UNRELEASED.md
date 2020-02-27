@@ -21,4 +21,6 @@
 
 ### Code quality
 
+- Improve pa11y.js output ([#2784](https://github.com/Shopify/polaris-react/pull/2784))
+
 ### Deprecations
